@@ -1,3 +1,2 @@
 # Python-write-clipboard
-writes clipboard
-Yes
+writes clipboard. Yes. Requires some libraries but no.
