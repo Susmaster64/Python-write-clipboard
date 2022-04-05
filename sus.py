@@ -8,56 +8,57 @@ keyboard = Controller()
 
 print('Started! hold the \'ctrl\' key to run script.')
 
-while kboard.is_pressed('ctrl') == False:
+while 1:
+
+    while kboard.is_pressed('ctrl') == False:
+    
+        time.sleep(0.5)
+        print('Started! hold the \'ctrl\' key to run script.')
     
     time.sleep(0.5)
-    print('Started! hold the \'ctrl\' key to run script.')
-    
-time.sleep(0.5)
-print('Starting!')
-time.sleep(0.1)
+    print('Starting!')
+    time.sleep(0.1)
 
-while kboard.is_pressed('Esc') == False:
+    while kboard.is_pressed('Esc') == False:
 
-    print('Thinking...')
-    time.sleep(random.uniform(1.6, 2.5))
-    print('Finished thunk!')
-    print('Begining processing, hold \'Esc\' to abort.')
-    time.sleep(0.01)
+        print('Thinking...')
+        time.sleep(random.uniform(0.2, 1.001))
+        print('Finished thunk!')
+        print('Begining processing, hold \'Esc\' to abort.')
+        time.sleep(0.01)
     
-    while 1:
+        while 1:
         
-        try:
+            try:
             
-            print('Trying to access the clipboard.')
-            win32clipboard.OpenClipboard()
-            break
+                print('Trying to access the clipboard.')
+                win32clipboard.OpenClipboard()
+                break
 
-        except Exception:
+            except Exception:
         
-            print('Clipboard access failed :( , trying again in 0.5 seconds.')
-            time.sleep(0.5)
-            continue
+                print('Clipboard access failed :( , trying again in 0.1 seconds.')
+                time.sleep(0.1)
+                continue
         
-    time.sleep(0.01)
-    print('Reading clipboard.')
-    data = win32clipboard.GetClipboardData()
-    win32clipboard.CloseClipboard()
-    time.sleep(0.01)
-    print('Typing...')
+        time.sleep(0.01)
+        print('Reading clipboard.')
+        data = win32clipboard.GetClipboardData()
+        win32clipboard.CloseClipboard()
+        time.sleep(0.01)
+        print('Typing...')
     
-    for n in data:
+        for n in data:
         
-        keyboard.type(n)
-        time.sleep(random.uniform(0.01, 0.1))
+            keyboard.type(n)
+            time.sleep(random.uniform(0.0001, 0.1))
         
-        if kboard.is_pressed('Esc'):
+            if kboard.is_pressed('Esc'):
             
-            print('manually aborted.')
-            aborted = True
-            break
+                print('manually aborted.')
+                break
         
-    time.sleep(0.5)
-    print('Finished typing or manually aborted. The answer was \'{}\'.'.format(data))
-    keyboard.press(Key.enter)
-    keyboard.release(Key.enter)
+        time.sleep(random.uniform(0.2, 0.5))
+        print('Finished typing or manually aborted. The answer was \'{}\'.'.format(data))
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
